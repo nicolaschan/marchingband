@@ -1,0 +1,59 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#container {
+    height: 95vh;
+    width: 100%;
+}
+
+#header {
+    background-color: white;
+    z-index: 10;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    border-bottom: 2px solid #0066ff;
+    transition: 1s;
+}
+#header:hover {
+    border-bottom: 2px solid #cccccc;
+}
+
+#header a:link,
+#header a:visited {
+    text-decoration: none;
+    color: #555555;
+    transition: color 0.4s;
+}
+#header a:hover,
+#header a:focus {
+    color: #0066ff;
+}
+
+ul {
+    list-style: none;
+    padding: 0px;
+    margin: 10px;
+}
+
+li {
+    margin: 10px;
+    display: inline;
+}
+
+#content {
+    width: 80%;
+    position: absolute;
+    padding: 10px 50px;
+    top: 60px;
+}
+#content h1 {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 48px;
+}
+#content h1 img {
+    border: 4px solid #0066ff;
+}

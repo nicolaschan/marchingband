@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+
+<head>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            background-color: #33ff33;
+        }
+    </style>
+</head>
+
+<body onload='start()'>
+    <div id='container'>
+        Time to get to dot: <span id='time'></span><br>
+        Score: <span id='score'>0</span>
+    </div>
+    <script>
+        function start() {            
+            var person = document.createElement('img');
+            person.setAttribute('src', 'face.png');
+            person.setAttribute('height', '20px');
+            person.setAttribute('width', '20px');
+            person.setAttribute('id', 'person');
+            person.style.left = 0;
+            person.style.top = 0;
+            person.style.position = 'absolute';
+            document.getElementById('container').appendChild(person);
+            
+            document.onkeydown = function(e) {
+                if (e.keyCode === 37) {
+                    // <
+                    movePerson(-10, 0);
+                } else if (e.keyCode === 39) {
+                    // >
+                    movePerson(10, 0);
+                } else if (e.keyCode === 40) {
+                    // v
+                    movePerson(0, -10);
+                } else if (e.keyCode === 38) {
+                    // ^
+                    movePerson(0, 10);
+                }
+            }
+
+            var dot = document.createElement('img');
+            dot.setAttribute('src', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Red.svg/120px-Red.svg.png');
+            dot.setAttribute('height', '20px');
+            dot.setAttribute('width', '20px');
+            dot.setAttribute('id', 'person');
+            dot.style.left = 0;
+            dot.style.top = 0;
+            dot.style.position = 'absolute';
+            document.getElementById('container').appendChild(dot);
+            
+            
+            
+            
+            
+            movePerson(70,-70);
+            moveDot(100,100);
+            
+            setTimer(10);
+            
+            function movePerson(delta_x, delta_y) {
+                person.style.left = (parseInt(person.style.left.substring(0, person.style.left.length - 2)) + delta_x) + 'px';
+                person.style.top = (parseInt(person.style.top.substring(0, person.style.top.length - 2)) - delta_y) + 'px';
+                
+                var person_x = parseInt(person.style.left.substring(0, person.style.left.length - 2)) + 10;
+                var person_y = parseInt(person.style.top.substring(0, person.style.top.length - 2)) - 10;
+                var dot_x = parseInt(dot.style.left.substring(0, dot.style.left.length - 2)) + 10;
+                var dot_y = parseInt(dot.style.top.substring(0, dot.style.top.length - 2)) - 10;
+                
+                
+                if ((person_x <= dot_x + 10) && (person_x >= dot_x - 10) && (person_y <= dot_y + 10) && (person_y >= dot_y - 10)) {
+                    if (document.getElementById('time').innerHTML <= 1) {
+                        moveDot(Math.floor(Math.random() * 10) * 50 + 10,Math.floor(Math.random() * 10) * 30 + 40);
+                        setTimer(Math.floor(Math.random() * 10) + 2);
+                        document.getElementById('score').innerHTML = parseInt(document.getElementById('score').innerHTML) + 1;
+                    } else {
+                        alert("You got to the dot too early!");
+                        location.reload();
+                    }
+                }
+            }
+
+            function moveDot(x, y) {
+                dot.style.left = x + 'px';
+                dot.style.top = y + 'px';
+            }
+            function setTimer(seconds) {
+                document.getElementById('time').innerHTML = seconds;
+                
+            }
+            setInterval(function() {
+                    document.getElementById('time').innerHTML = parseInt(document.getElementById('time').innerHTML) - 1;
+                    if (document.getElementById('time').innerHTML < 0) {
+                        alert("You didn't get to the dot in time!");
+                        location.reload();
+                    }
+                }, 1000);
+        }
+    </script>
+</body>
+
+</html>
