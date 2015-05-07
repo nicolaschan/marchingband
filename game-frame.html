@@ -18,9 +18,9 @@
     <script>
         function start() {            
             var person = document.createElement('img');
-            person.setAttribute('src', 'face.png');
-            person.setAttribute('height', '20px');
-            person.setAttribute('width', '20px');
+            person.setAttribute('src', 'hat.png');
+            person.setAttribute('height', '60px');
+            person.setAttribute('width', '60px');
             person.setAttribute('id', 'person');
             person.style.left = 0;
             person.style.top = 0;
@@ -58,7 +58,7 @@
             
             
             movePerson(70,-70);
-            moveDot(100,100);
+            moveDot(150,150);
             
             setTimer(10);
             
@@ -66,13 +66,13 @@
                 person.style.left = (parseInt(person.style.left.substring(0, person.style.left.length - 2)) + delta_x) + 'px';
                 person.style.top = (parseInt(person.style.top.substring(0, person.style.top.length - 2)) - delta_y) + 'px';
                 
-                var person_x = parseInt(person.style.left.substring(0, person.style.left.length - 2)) + 10;
-                var person_y = parseInt(person.style.top.substring(0, person.style.top.length - 2)) - 10;
+                var person_x = parseInt(person.style.left.substring(0, person.style.left.length - 2)) + 30;
+                var person_y = parseInt(person.style.top.substring(0, person.style.top.length - 2)) + 30;
                 var dot_x = parseInt(dot.style.left.substring(0, dot.style.left.length - 2)) + 10;
-                var dot_y = parseInt(dot.style.top.substring(0, dot.style.top.length - 2)) - 10;
+                var dot_y = parseInt(dot.style.top.substring(0, dot.style.top.length - 2)) + 10;
                 
                 
-                if ((person_x <= dot_x + 10) && (person_x >= dot_x - 10) && (person_y <= dot_y + 10) && (person_y >= dot_y - 10)) {
+                if ((person_x <= dot_x + 20) && (person_x >= dot_x - 20) && (person_y <= dot_y + 20) && (person_y >= dot_y - 20)) {
                     if (document.getElementById('time').innerHTML <= 1) {
                         moveDot(Math.floor(Math.random() * 10) * 50 + 10,Math.floor(Math.random() * 10) * 30 + 40);
                         setTimer(Math.floor(Math.random() * 10) + 2);
